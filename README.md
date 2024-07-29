@@ -28,21 +28,21 @@ The discriminator, on the other hand, utilizes a series of convolutional layers 
 This adversarial training process enhances the generator's ability to create realistic color outputs, while the discriminator becomes adept at distinguishing between real and generated images, leading to improved performance in image colorization tasks.
 
 ### Generator Model
-The generator model takes a grayscale image as input and outputs a colorized version of the same image. Here's how the architecture is structured: 
-1.The input layer accepts a grayscale image with dimensions (image_size, image_size, 1). 
-2.The model consists of a series of convolutional layers with increasing depth (16, 32, 64, 128) and decreasing spatial dimensions (5x5, 3x3 kernels). Each convolutional layer is followed by a LeakyReLU activation function. 
-3.The bottleneck layer is a convolutional layer with 128 filters, a 3x3 kernel, and a tanh activation function, which compresses the feature maps into a compact representation. 
-4.The decoder part of the generator consists of a series of transposed convolutional layers (Conv2DTranspose) that gradually increase the spatial dimensions and decrease the depth of the feature maps. These layers are responsible for upsampling the compressed representation back to the original image size. 
-5.Concatenation layers (Concatenate) are used to combine the feature maps from the encoder part of the generator with the corresponding feature maps in the decoder part. This allows the model to preserve spatial information and details from the input grayscale image. 
-6.The final output layer is a transposed convolutional layer with 3 filters (corresponding to the RGB channels) and a ReLU activation function, which produces the colorized image.
+The generator model takes a grayscale image as input and outputs a colorized version of the same image. Here's how the architecture is structured:   
+1. The input layer accepts a grayscale image with dimensions (image_size, image_size, 1).   
+2. The model consists of a series of convolutional layers with increasing depth (16, 32, 64, 128) and decreasing spatial dimensions (5x5, 3x3 kernels). Each convolutional layer is followed by a LeakyReLU activation function.   
+3. The bottleneck layer is a convolutional layer with 128 filters, a 3x3 kernel, and a tanh activation function, which compresses the feature maps into a compact representation.   
+4. The decoder part of the generator consists of a series of transposed convolutional layers (Conv2DTranspose) that gradually increase the spatial dimensions and decrease the depth of the feature maps. These layers are responsible for upsampling the compressed representation back to the original image size.   
+5. Concatenation layers (Concatenate) are used to combine the feature maps from the encoder part of the generator with the corresponding feature maps in the decoder part. This allows the model to preserve spatial information and details from the input grayscale image.   
+6. The final output layer is a transposed convolutional layer with 3 filters (corresponding to the RGB channels) and a ReLU activation function, which produces the colorized image.  
 
 ### Discriminator Model
 The discriminator model takes an image (either a real color image or a generated colorized image) and classifies it as real or fake (generated). The architecture of the discriminator is as follows: 
-1.The input layer accepts an RGB image with dimensions (200, 200, 3). 
-2.The model consists of a series of convolutional layers with increasing depth (32, 64, 128, 256) and decreasing spatial dimensions (7x7, 5x5, 3x3 kernels). Each convolutional layer is followed by a ReLU activation function. 
-3.Max pooling layers (MaxPooling2D) are used after every two convolutional layers to reduce the spatial dimensions of the feature maps and introduce translation invariance. 
-4.The flattened feature maps are passed through a series of dense layers with decreasing dimensions (512, 128, 16). 
-5.The final output layer is a dense layer with a single neuron and a sigmoid activation function, which outputs the probability of the input image being real (1) or fake (0). 
+1. The input layer accepts an RGB image with dimensions (200, 200, 3).   
+2. The model consists of a series of convolutional layers with increasing depth (32, 64, 128, 256) and decreasing spatial dimensions (7x7, 5x5, 3x3 kernels). Each convolutional layer is followed by a ReLU activation function.   
+3. Max pooling layers (MaxPooling2D) are used after every two convolutional layers to reduce the spatial dimensions of the feature maps and introduce translation invariance.   
+4. The flattened feature maps are passed through a series of dense layers with decreasing dimensions (512, 128, 16).   
+5. The final output layer is a dense layer with a single neuron and a sigmoid activation function, which outputs the probability of the input image being real (1) or fake (0).   
 
 
 After defining generator and discriminator, this code sets up the necessary components for training a GAN, including the loss functions for the generator and discriminator, the optimizers used for updating the model weights, and the initialization of the generator and discriminator models. The discriminator loss combines binary cross-entropy for real and fake images, while the generator loss uses mean squared error between the generated images and real images. The Adam optimizer is used for both models with a learning rate of 0.0005.

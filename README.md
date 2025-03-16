@@ -5,7 +5,7 @@ Image colorization using Generative Adversarial Networks (GANs) has emerged as a
 
 ### Here is how I made this dataset through web scraping and then refining it:  
   
-1. Scraped images using bing-image-downloader. searched for various categories and saved them in separate folders.  
+1. Crawled images using bing-image-downloader. searched for various categories and saved them in separate folders.  
 (there are 10 categories, each containing 100 images)
 2. Made a backup  
 3. Deleted bad extensions

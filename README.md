@@ -3,7 +3,7 @@ Colorizing gray scale images.
 
 Image colorization using Generative Adversarial Networks (GANs) has emerged as a powerful method for automatically adding color to grayscale images. In the context of image colorization, the generator's role is to transform a grayscale image into a colorized version, while the discriminator evaluates the authenticity of the generated image against real color images. This adversarial process encourages the generator to produce increasingly realistic outputs, as it learns to minimize the likelihood of the discriminator correctly identifying generated images as fake.
 
-### Here is how I made this dataset through web scraping and then refining it:  
+### Here is how I made this dataset through web crawling and then refining it:  
   
 1. Crawled images using bing-image-downloader. searched for various categories and saved them in separate folders.  
 (there are 10 categories, each containing 100 images)
